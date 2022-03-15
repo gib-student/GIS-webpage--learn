@@ -37,7 +37,7 @@
             const view = new MapView({
                 map: map,
                 center: [-110.697111, 44.737789], // Longitude, latitude
-                zoom: 13, // Zoom level
+                zoom: 9, // Zoom level
                 container: "viewDiv" // Div element
             });
 
@@ -45,38 +45,43 @@
             map.add(graphicsLayer);
 
             // Create all the points from a data file
-            
-    
-            // Grand Visitor Center
-            const point = { //Create a point
-                type: "point",
-                longitude: -110.697111,
-                latitude: 44.737789
-            };
-            const popupTemplate = {
-                title: "{title}",
-                content: "{Description}"
-             }
-             const attributes = {
-                Name: "Graphic",
-                Description: "I am a polygon"
-             }
-            const simpleMarkerSymbol = {
-                type: "simple-marker",
-                color: [226, 119, 40],  // Orange
-                outline: {
-                    color: [255, 255, 255], // White
-                    width: 1
+            fetch('https://raw.githubusercontent.com/gib-student/GIS-webpage--learn/main/data.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                for (let i in data.points) {
+                    console.log(data.points[i].title);
+                    const point = { //Create a point
+                        type: "point",
+                        longitude: data.points[i].lon,
+                        latitude: data.points[i].lat
+                    };
+                    const simpleMarkerSymbol = {
+                        type: "simple-marker",
+                        color: [226, 119, 40],  // Orange
+                        outline: {
+                            color: [255, 255, 255], // White
+                            width: 1
+                        }
+                    };
+                    const popupTemplate = {
+                        title: "{Name}",
+                        content: "{Description}"
+                    };
+                    const attributes = {
+                        Name: data.points[i].title,
+                        Description: data.points[i].content
+                    };
+                    const pointGraphic = new Graphic({
+                        geometry: point,
+                        symbol: simpleMarkerSymbol,
+        
+                        attributes: attributes,
+                        popupTemplate: popupTemplate
+                    });
+                    graphicsLayer.add(pointGraphic);
                 }
-            };
-            const pointGraphic = new Graphic({
-                geometry: point,
-                symbol: simpleMarkerSymbol,
-
-                attributes: attributes,
-                popupTemplate: popupTemplate
             });
-            graphicsLayer.add(pointGraphic);
         });
 
       </script>
