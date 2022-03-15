@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.22/"></script>
+
+    <script>
+        require([
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/Graphic",
+        "esri/layers/GraphicsLayer"
+
+        ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+            esriConfig.apiKey = "AAPKf7ae662e60664146b6dbea652154105amLLl27TtD"+
+            "DBFv2jdnChRTlV9I--4UlBLxXmEdpewg98-nhdJCtMibwTZ0cm9MbYL";
+
+            const map = new Map({
+                basemap: "arcgis-topographic" // Basemap layer service
+            });
+            // Yellowstone national Park is the starting map view
+            const view = new MapView({
+                map: map,
+                center: [-110.697111, 44.737789], // Longitude, latitude
+                zoom: 13, // Zoom level
+                container: "viewDiv" // Div element
+            });
+
+            const graphicsLayer = new GraphicsLayer();
+            map.add(graphicsLayer);
+
+            // Create all the points from a data file
+            
+    
+            // Grand Visitor Center
+            const point = { //Create a point
+                type: "point",
+                longitude: -110.697111,
+                latitude: 44.737789
+            };
+            const popupTemplate = {
+                title: "{title}",
+                content: "{Description}"
+             }
+             const attributes = {
+                Name: "Graphic",
+                Description: "I am a polygon"
+             }
+            const simpleMarkerSymbol = {
+                type: "simple-marker",
+                color: [226, 119, 40],  // Orange
+                outline: {
+                    color: [255, 255, 255], // White
+                    width: 1
+                }
+            };
+            const pointGraphic = new Graphic({
+                geometry: point,
+                symbol: simpleMarkerSymbol,
+
+                attributes: attributes,
+                popupTemplate: popupTemplate
+            });
+            graphicsLayer.add(pointGraphic);
+        });
+
+      </script>
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
