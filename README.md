@@ -1,30 +1,31 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+For this project, I made a webpage which draws from the a geographic information system (GIS)
+API to display a topographical map of Yellowstone National Park, 
+with points indicating points of interest in the area. I took the locations and information 
+of the points of interest from the official Yellowstone National Park website.
 
-{Provide a description the map software that you wrote. Describe how to use your software.  Describe the source of the data that you used.}
+I created this to learn about GIS, how to use the API of a real company which offers it, 
+and to learn the power and usefulness of these tools.
 
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running and a walkthrough of the code.}
+My software is easy to use; simply use the mouse to navigate around the map.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+* ArcGIS library
+* JavaScript
+* HTML
+* CSS
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [ArcGIS Developer](https://developers.arcgis.com/javascript/latest/)
+* [National Park Services](https://www.nps.gov/yell/planyourvisit/maps.htm)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Add more points of interest
+* Add additional types of information, other than just points
+* Obtain information automatically from a public server so it is always updated
