@@ -18,6 +18,7 @@ My software is easy to use; simply use the mouse to navigate around the map.
 * JavaScript
 * HTML
 * CSS
+* JSON
 
 # Useful Websites
 
